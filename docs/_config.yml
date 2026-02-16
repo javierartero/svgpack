@@ -2,7 +2,7 @@
 title: svgpack
 description: Convert SVG files into CSS variables and ready-to-use classes
 author: MarsBased
-url: https://svgpack.marsbased.com
+url: https://svgpack.javierartero.com
 baseurl: ''
 
 custom_css:
@@ -28,14 +28,13 @@ nav_external_links_new_tab: true
 nav_fold: false
 aux_links:
   "<i class='svgpack-mask  icon-github'></i> svgpack on GitHub":
-    - "//github.com/MarsBased/svgpack"
+    - "//github.com/javierartero/svgpack"
   "<i class='svgpack-mask  icon-npm'></i> svgpack on npm":
     - "//www.npmjs.com/package/@marsbased/svgpack"
 
 # Footer
 footer_content: |
   <p>svgpack - Convert SVG files into CSS variables and ready-to-use classes</p>
-  <p>Built with ❤️ by <a href="https://marsbased.com">MarsBased</a></p>
 
 # Color scheme
 color_scheme: svgpack-custom

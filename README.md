@@ -1,12 +1,12 @@
 # svgpack
 
-# [![svgpack](https://raw.githubusercontent.com/MarsBased/svgpack/main/docs/svgpack-logo.svg)](https://svgpack.marsbased.com)
+# [![svgpack](https://raw.githubusercontent.com/MarsBased/svgpack/main/docs/svgpack-logo.svg)](https://svgpack.javierartero.com)
 
 [![npm](https://img.shields.io/npm/v/@marsbased/svgpack.svg?style=flat-square)](https://www.npmjs.com/package/@marsbased/svgpack)
 
 ## Documentation
 
-📖 **[View Full Documentation](https://svgpack.marsbased.com)**
+📖 **[View Full Documentation](https://svgpack.javierartero.com)**
 
 `svgpack` converts SVG files into CSS variables and ready-to-use classes.
 
@@ -36,12 +36,12 @@ Instead of embedding SVG code directly in your HTML (which downloads the entire 
 
 ## Table of Contents
 
-- [Quick Start](https://svgpack.marsbased.com/quick-start/)
-- [CLI Usage](https://svgpack.marsbased.com/cli-usage/)
-- [CSS Variables Usage](https://svgpack.marsbased.com/css-variables/)
-- [SCSS Functions](https://svgpack.marsbased.com/scss-functions/)
-- [React Components](https://svgpack.marsbased.com/react-components/)
-- [Installation](https://svgpack.marsbased.com/installation/)
+- [Quick Start](https://svgpack.javierartero.com/quick-start/)
+- [CLI Usage](https://svgpack.javierartero.com/cli-usage/)
+- [CSS Variables Usage](https://svgpack.javierartero.com/css-variables/)
+- [SCSS Functions](https://svgpack.javierartero.com/scss-functions/)
+- [React Components](https://svgpack.javierartero.com/react-components/)
+- [Installation](https://svgpack.javierartero.com/installation/)
 
 ## Quick Start
 
