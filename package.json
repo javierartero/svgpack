@@ -1,6 +1,6 @@
 {
   "name": "@artero/svgpack",
-  "version": "2.1.9",
+  "version": "2.2.0",
   "description": "Generate reusable CSS, Tailwind v4 and SASS tokens from SVG icons and assets.",
   "repository": "git@github.com:JavierArtero/svgpack.git",
   "author": "Javier Artero",
