@@ -1,7 +1,7 @@
 ---
 layout: default
 title: React Components
-nav_order: 4
+nav_order: 7
 permalink: /react-components/
 ---
 
@@ -12,7 +12,7 @@ svgpack includes ready-to-use React components for easy integration:
 ## Usage
 
 ```jsx
-import { SvgpackMask, SvgpackBackground } from '@marsbased/svgpack';
+import { SvgpackMask, SvgpackBackground } from '@artero/svgpack';
 
 // SvgpackMask component (great for colored icons)
 <SvgpackMask
@@ -50,7 +50,7 @@ Both components accept the following props:
 The components are fully typed and include TypeScript definitions:
 
 ```tsx
-import { SvgpackMask, SvgpackBackground } from '@marsbased/svgpack';
+import { SvgpackMask, SvgpackBackground } from '@artero/svgpack';
 
 interface MyComponentProps {
   iconName: string;

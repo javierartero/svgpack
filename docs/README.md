@@ -11,7 +11,8 @@ kramdown:
 
 <div class="svgpack-mask main-logo-svgpack" aria-label="svgpack logo"></div>
 
-[![npm](https://img.shields.io/npm/v/@marsbased/svgpack.svg?style=flat-square)](https://www.npmjs.com/package/@marsbased/svgpack)
+[![npm](https://img.shields.io/npm/v/@artero/svgpack.svg?style=flat-square)](https://www.npmjs.com/package/@artero/svgpack)
+
 
 `svgpack` converts SVG files into CSS variables and ready-to-use classes.
 
@@ -53,8 +54,11 @@ Instead of embedding SVG code directly in your HTML (which downloads the entire 
 ### Install as Project Dependency (Recommended)
 
 ```bash
-npm install @marsbased/svgpack
+npm install -D @artero/svgpack
 ```
+
+> ⚠️ Previously published as `@marsbased/svgpack`.  
+> The old package is deprecated and will no longer receive updates.
 
 ### CLI Usage
 

@@ -38,10 +38,22 @@ Generate SCSS functions instead of CSS variables:
 svgpack my-images/ --sass > images.scss
 ```
 
+## Tailwind v4 mode
+
+Generate output for Tailwind v4 (`@theme` and `@utility`):
+
+```bash
+svgpack my-icons/ --tailwind > svgpack.css
+```
+
+Use `--prefix <name>` to customize variable names (e.g. `--prefix icons` → `--icons-icon-search`). See [Tailwind v4](/tailwind-v4/) for details.
+
 ## CLI Options
 
 - `--background [className]` - Generate background CSS classes
-- `--mask [className]` - Generate mask CSS classes  
+- `--mask [className]` - Generate mask CSS classes
+- `--tailwind` - Generate Tailwind v4 native output (`@theme` and `@utility`)
+- `--prefix <name>` - Prefix for generated CSS variables (default: none in CSS mode; `svgpack` in `--tailwind` mode). Sanitized for CSS (e.g. spaces → hyphens).
 - `--sass` - Generate SCSS functions instead of CSS variables
 - `--help` - Show help information
 
