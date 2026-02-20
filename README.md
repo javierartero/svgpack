@@ -1,8 +1,8 @@
 # svgpack
 
-# [![svgpack](https://raw.githubusercontent.com/MarsBased/svgpack/main/docs/svgpack-logo.svg)](https://svgpack.javierartero.com)
+# [![svgpack](https://raw.githubusercontent.com/javierartero/svgpack/main/docs/svgpack-logo.svg)](https://svgpack.javierartero.com)
 
-[![npm](https://img.shields.io/npm/v/@marsbased/svgpack.svg?style=flat-square)](https://www.npmjs.com/package/@marsbased/svgpack)
+[![npm](https://img.shields.io/npm/v/@artero/svgpack.svg?style=flat-square)](https://www.npmjs.com/package/@artero/svgpack)
 
 ## Documentation
 
@@ -10,7 +10,7 @@
 
 `svgpack` converts SVG files into CSS variables and ready-to-use classes.
 
-It optimizes and sanitizes SVGs and generates CSS variables for direct use, plus optional CSS classes for easy implementation. Perfect for modern web development with frameworks like Remix, NextJS, and vanilla CSS.
+It optimizes and sanitizes SVGs and generates CSS variables for direct use, plus optional CSS classes for easy implementation. Perfect for modern web development with frameworks like Angular, NextJS, and vanilla CSS.
 
 **Why CSS Variables over Direct SVG?**
 
@@ -39,6 +39,7 @@ Instead of embedding SVG code directly in your HTML (which downloads the entire 
 - [Quick Start](https://svgpack.javierartero.com/quick-start/)
 - [CLI Usage](https://svgpack.javierartero.com/cli-usage/)
 - [CSS Variables Usage](https://svgpack.javierartero.com/css-variables/)
+- [Tailwind v4](https://svgpack.javierartero.com/tailwind-v4/)
 - [SCSS Functions](https://svgpack.javierartero.com/scss-functions/)
 - [React Components](https://svgpack.javierartero.com/react-components/)
 - [Installation](https://svgpack.javierartero.com/installation/)
@@ -48,8 +49,10 @@ Instead of embedding SVG code directly in your HTML (which downloads the entire 
 ### Install as Project Dependency (Recommended)
 
 ```bash
-npm install @marsbased/svgpack
+npm install -D @artero/svgpack
 ```
+
+⚠️ **Previously published as @marsbased/svgpack.** The old package is deprecated and will no longer receive updates.
 
 ### CLI Usage
 
@@ -63,9 +66,17 @@ svgpack my-images/ --background --mask > images.css
 # SCSS functions instead of CSS variables
 svgpack my-images/ --sass > images.scss
 
+# Tailwind v4 native output
+svgpack my-images/ --tailwind > theme.css
+
 # Get help
 svgpack --help
 ```
+
+## Origins
+
+Originally developed at [MarsBased](https://github.com/orgs/MarsBased) by [Danigb](https://github.com/danigb) and [Javier Artero](https://github.com/javierartero).
+Now maintained independently.
 
 ## License
 

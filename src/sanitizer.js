@@ -1,7 +1,7 @@
 /**
  * To give support IE browser must change some characters
  *
- * @see https://github.com/MarsBased/svgpack/issues/1
+ * @see https://github.com/javierartero/svgpack/issues/1
  * @see https://codepen.io/jakob-e/pen/doMoML
  *
  * @params {Object} options

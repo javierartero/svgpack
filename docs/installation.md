@@ -9,60 +9,43 @@ kramdown:
   parse_block_html: true
 ---
 
-# Installation Options
+# Installation
 
-## Project Dependency (Recommended)
+## Recommended (Build-time usage)
 
-### As Production Dependency
-
-Install as a regular dependency if you need **React components** in your application:
-
-```bash
-# npm
-npm install @marsbased/svgpack
-
-# yarn
-yarn add @marsbased/svgpack
-```
-
-Use this when:
-- **React Components**: You import and use `SvgpackBackground` or `SvgpackMask` components in your React app
-- The package needs to be available in production/runtime
-
-### As Development Dependency
-
-Install as a dev dependency if you only need **build-time SVG processing** (CSS/SCSS generation):
+Svgpack is primarily a CLI tool.  
+Install it as a dev dependency in your project:
 
 ```bash
-# npm
-npm install --save-dev @marsbased/svgpack
-
-# yarn
-yarn add --dev @marsbased/svgpack
+npm install -D @artero/svgpack
+# or
+yarn add -D @artero/svgpack
 ```
 
-Use this when:
-- **Build Scripts**: You only use svgpack to generate CSS/SCSS files during build time
-- You don't use React components
-- The package is only needed during development/build process
+> ⚠️ Previously published as `@marsbased/svgpack`.  
+> The old package is deprecated and will no longer receive updates.
 
-## Global Installation (CLI Only)
+---
 
-For one-off usage or manual processing:
+## Runtime Usage (React components)
+
+If you import `SvgpackMask` or `SvgpackBackground` directly in your React application, install it as a regular dependency:
 
 ```bash
-# npm
-npm install --global @marsbased/svgpack
-
-# yarn
-yarn global add @marsbased/svgpack
+npm install @artero/svgpack
+# or
+yarn add @artero/svgpack
 ```
 
-## Development Installation
+---
 
-To get the latest version, clone the repository and install from it:
+## Global CLI (Optional)
+
+For one-off usage outside a project:
 
 ```bash
-cd svgpack
-npm install --global .
+npm install -g @artero/svgpack
+# or
+yarn global add @artero/svgpack
 ```
+
