@@ -1,7 +1,7 @@
 ---
 layout: default
 title: CSS Variables
-nav_order: 5
+nav_order: 6
 permalink: /css-variables/
 ---
 
@@ -9,7 +9,7 @@ permalink: /css-variables/
 
 ## Simple Example
 
-Running `svgpack` against [this svg file](https://github.com/MarsBased/svgpack/blob/main/test/assets/svgpack-imagotype.svg):
+Running `svgpack` against [this svg file](https://github.com/javierartero/svgpack/blob/main/test/assets/svgpack-imagotype.svg):
 
 ```bash
 svgpack test/assets/svgpack-imagotype.svg
@@ -88,6 +88,8 @@ Simply add the class to any element:
 <!-- Custom sizing -->
 <div class="svgpack-background" style="--image: var(--my-logo); --image--width: 2em; --image--height: 2em"></div>
 ```
+
+For **Tailwind v4** integration (native `@theme` and `@utility` output), see [Tailwind v4](/tailwind-v4/).
 
 ## Advanced Usage
 

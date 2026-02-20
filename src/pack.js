@@ -12,15 +12,127 @@ const shouldSkipReplace = (options) =>
   options.r === true || options['noreplace'] === true;
 
 /**
+ * Sanitize prefix for use in CSS variable names.
+ *
+ * - Trim surrounding whitespace
+ * - Convert internal whitespace to hyphens
+ * - Remove characters outside [a-zA-Z0-9_-]
+ * - Trim leading/trailing hyphens/underscores
+ */
+function sanitizeCssPrefix(value) {
+  if (value == null || typeof value !== 'string') return '';
+  const trimmed = value.trim();
+  const withHyphens = trimmed.replace(/\s+/g, '-');
+  const cleaned = withHyphens.replace(/[^a-zA-Z0-9_-]/g, '');
+  return cleaned.replace(/^[-_]+|[-_]+$/g, '');
+}
+
+function getEffectivePrefix(options) {
+  if (options.tailwind && options.prefix === undefined) {
+    return sanitizeCssPrefix('svgpack');
+  }
+  return sanitizeCssPrefix(options.prefix ?? '');
+}
+
+function buildStandardCssOutput(cssVars, options) {
+  let result = '';
+  if (cssVars.length > 0) {
+    result += `:root {\n${cssVars.join('\n').trimEnd()}\n}\n`;
+  }
+  if (options.background) {
+    const backgroundClass =
+      options.background === true ? 'svgpack-background' : options.background;
+    result += `\n.${backgroundClass} {\n`;
+    result += `  background: var(--image, var(--svgpack-image))\n`;
+    result += `    center / var(--image--bg-size, var(--svgpack-bg-size, 100% 100%))\n`;
+    result += `    no-repeat;\n`;
+    result += `  width: var(--image--width, var(--svgpack-width, 1em));\n`;
+    result += `  height: var(--image--height, var(--svgpack-height, 1em));\n`;
+    result += `}\n`;
+  }
+  if (options.mask) {
+    const maskClass = options.mask === true ? 'svgpack-mask' : options.mask;
+    result += `\n.${maskClass} {\n`;
+    result += `  -webkit-mask: var(--image, var(--svgpack-image))\n`;
+    result += `    center / var(--image--mask-size, var(--svgpack-mask-size, 100% 100%))\n`;
+    result += `    no-repeat;\n`;
+    result += `  mask: var(--image, var(--svgpack-image))\n`;
+    result += `    center / var(--image--mask-size, var(--svgpack-mask-size, 100% 100%))\n`;
+    result += `    no-repeat;\n`;
+    result += `  background-color: var(--image--color, var(--svgpack-color, currentColor));\n`;
+    result += `  width: var(--image--width, var(--svgpack-width, 1em));\n`;
+    result += `  height: var(--image--height, var(--svgpack-height, 1em));\n`;
+    result += `}\n`;
+  }
+  return result;
+}
+
+function buildTailwindCssOutput(cssVars, options) {
+  let result = '';
+  if (cssVars.length > 0) {
+    result += `@theme {\n${cssVars.join('\n').trimEnd()}\n}\n\n`;
+  }
+  // Token selector utility (always in Tailwind mode)
+  // Utility names stay `svgpack-*`, but the selected theme variables must match the chosen prefix.
+  const effectivePrefix = getEffectivePrefix(options);
+  const tokenSelector = effectivePrefix ? `--${effectivePrefix}-*` : `--*`;
+
+  result += `
+@utility svgpack-* {
+  --svgpack-image: --value(${tokenSelector});
+}
+`.trimStart();
+
+  result += `
+@utility svgpack-mask {
+  -webkit-mask: var(--image, var(--svgpack-image))
+    center / var(--image--mask-size, var(--svgpack-mask-size, 100% 100%))
+    no-repeat;
+  mask: var(--image, var(--svgpack-image))
+    center / var(--image--mask-size, var(--svgpack-mask-size, 100% 100%))
+    no-repeat;
+  background-color: var(--image--color, var(--svgpack-color, currentColor));
+  width: var(--image--width, var(--svgpack-width, 1em));
+  height: var(--image--height, var(--svgpack-height, 1em));
+}
+`;
+
+  result += `
+@utility svgpack-bg {
+  background: var(--image, var(--svgpack-image))
+    center / var(--image--bg-size, var(--svgpack-bg-size, 100% 100%))
+    no-repeat;
+  width: var(--image--width, var(--svgpack-width, 1em));
+  height: var(--image--height, var(--svgpack-height, 1em));
+}
+`;
+
+  return result;
+}
+
+/**
  * Given a list of sources, pack them
  */
 module.exports = function packsvg(options = {}) {
-  const isCssMode =
-    options.css === true ||
-    options['css-vars'] === true ||
-    options.sass !== true;
+  // Output mode selection (mutually exclusive)
+  const hasCssFlag = options.css === true || options['css-vars'] === true;
+  const hasSassFlag = options.sass === true;
+  const hasTailwindFlag = options.tailwind === true;
+
+  const selectedModes =
+    (hasCssFlag ? 1 : 0) + (hasSassFlag ? 1 : 0) + (hasTailwindFlag ? 1 : 0);
+  if (selectedModes > 1) {
+    throw new Error(
+      'Choose only one output mode: --css/--css-vars, --sass, or --tailwind'
+    );
+  }
+
+  const mode = hasTailwindFlag ? 'tailwind' : hasSassFlag ? 'sass' : 'css';
+  const isCssMode = mode === 'css' || mode === 'tailwind';
+
+  const effectivePrefix = getEffectivePrefix(options);
   const toSassFunction = sass(options);
-  const toCssFunction = css(options);
+  const toCssFunction = css({ ...options, effectivePrefix });
   const skipReplace = shouldSkipReplace(options);
 
   return function packsvg(sources) {
@@ -57,39 +169,12 @@ module.exports = function packsvg(options = {}) {
               }
             }
           }
-          let result = '';
-          if (cssVars.length > 0) {
-            result += `:root {\n${cssVars.join('\n')}\n}\n`;
-          }
-
-          if (options.background || options.mask) {
-            if (options.background) {
-              const backgroundClass =
-                options.background === true
-                  ? 'svgpack-background'
-                  : options.background;
-              result += `\n.${backgroundClass} {\n`;
-              result += `  background: var(--image) center/contain no-repeat;\n`;
-              result += `  background-size: 100% 100%;\n`;
-              result += `  width: var(--image--width, 1em);\n`;
-              result += `  height: var(--image--height, 1em);\n`;
-              result += `}\n`;
-            }
-            if (options.mask) {
-              const maskClass =
-                options.mask === true ? 'svgpack-mask' : options.mask;
-              result += `\n.${maskClass} {\n`;
-              result += `  background-color: var(--image--color, currentColor);\n`;
-              result += `  mask: var(--image) center/contain no-repeat;\n`;
-              result += `  mask-size: 100% 100%;\n`;
-              result += `  width: var(--image--width, 1em);\n`;
-              result += `  height: var(--image--height, 1em);\n`;
-              result += `}\n`;
-            }
-          }
-
+          const result = options.tailwind
+            ? buildTailwindCssOutput(cssVars, options)
+            : buildStandardCssOutput(cssVars, options);
           return result;
         }
+        // SCSS mode output
         return skipReplace ? all : REPLACE_FN + all;
       });
   };

@@ -124,10 +124,12 @@
 
 .nav-list .nav-list-item .nav-list-link.active,
 .nav-list .nav-list-item .nav-list-link:hover {
+  color: rgba(255,255,255,.8);
+  background: none;
   background: linear-gradient(-90deg, rgba(235, 237, 245, 0.35) 0%, rgba(235, 237, 245, 0.05) 80%, rgba(235, 237, 245, .1) 100%);
 }
 
-.nav-list .nav-list-item .nav-list-link:hover {
+.nav-list .nav-list-item .nav-list-link.active {
   font-weight: 700;
 }
 

@@ -10,7 +10,7 @@ permalink: /quick-start/
 ## Install as Project Dependency (Recommended)
 
 ```bash
-npm install @marsbased/svgpack
+npm install @artero/svgpack
 ```
 
 ## CLI Usage
@@ -56,13 +56,13 @@ npm run build:svg
 ## Global Installation (Alternative)
 
 ```bash
-npm install --global @marsbased/svgpack
+npm install --global @artero/svgpack
 ```
 
 ## React Components (Optional)
 
 ```jsx
-import { SvgpackMask, SvgpackBackground } from '@marsbased/svgpack';
+import { SvgpackMask, SvgpackBackground } from '@artero/svgpack';
 
 // Use as React components
 <SvgpackMask image="my-icon" width="24px" height="24px" className="text-blue-500" />
