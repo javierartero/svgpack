@@ -1,5 +1,3 @@
-# svgpack
-
 # [![svgpack](https://raw.githubusercontent.com/javierartero/svgpack/main/docs/svgpack-logo.svg)](https://svgpack.javierartero.com)
 
 [![npm](https://img.shields.io/npm/v/@artero/svgpack.svg?style=flat-square)](https://www.npmjs.com/package/@artero/svgpack)
@@ -12,27 +10,25 @@
 
 It optimizes and sanitizes SVGs and generates CSS variables for direct use, plus optional CSS classes for easy implementation. Perfect for modern web development with frameworks like Angular, NextJS, and vanilla CSS.
 
-**Why CSS Variables over Direct SVG?**
+**Why CSS Variables instead of inline SVG?**
 
-Instead of embedding SVG code directly in your HTML (which downloads the entire SVG content on every page load), svgpack converts SVGs into CSS variables that are:
+Inlining SVG directly into your HTML duplicates markup across pages and components.  
+svgpack converts SVG assets into CSS variables that:
 
-- **Cached once**: CSS variables are downloaded once and cached by the browser, reducing bandwidth usage
-- **Reusable**: Same SVG can be used multiple times without duplicating content
-- **Smaller HTML**: No inline SVG code cluttering your HTML markup
-- **Better performance**: Faster page loads since SVG content isn't repeated in every HTML document
-- **Easier maintenance**: Update SVG once in CSS, changes apply everywhere
+- **Avoid duplicated markup**: SVG definitions live in CSS, not repeated in every component.
+- **Are cached once**: The stylesheet is cached by the browser.
+- **Keep HTML cleaner**: No large inline `<svg>` blocks in your templates.
+- **Encourage reuse**: The same asset can be used consistently across the application.
+- **Simplify updates**: Update the SVG once and the change propagates everywhere.
 
 **Additional Advantages:**
 
-- Fewer requests for resources on the server
-- Less management problems with the assets of the css
-- CSS variables are native and work in all modern browsers
-- Ready-to-use CSS classes for instant implementation
-- Perfect for component-based frameworks like React, Vue, Angular
-- Easy to use with CSS-in-JS libraries
-- No build step required for CSS variables
-- Flexible sizing and coloring with CSS custom properties
-- It is much faster to update all resources, save the svg
+- Reduced HTML size and duplication
+- Centralized asset management
+- Native CSS custom properties (no runtime required)
+- Ready-to-use utility classes
+- Works seamlessly with modern frameworks (React, Vue, Angular)
+- Optional Tailwind v4 native integration
 
 ## Table of Contents
 
@@ -73,7 +69,7 @@ svgpack my-images/ --tailwind > theme.css
 svgpack --help
 ```
 
-## Origins
+## Credits
 
 Originally developed at [MarsBased](https://github.com/orgs/MarsBased) by [Danigb](https://github.com/danigb) and [Javier Artero](https://github.com/javierartero).
 Now maintained independently.

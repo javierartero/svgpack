@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Home
-description: Convert SVG files into CSS variables and ready-to-use classes
+description: Convert SVG assets into reusable CSS variables and native Tailwind v4 tokens with optional utility classes.
 nav_order: 1
 permalink: /
 markdown: kramdown
@@ -11,34 +11,33 @@ kramdown:
 
 <div class="svgpack-mask main-logo-svgpack" aria-label="svgpack logo"></div>
 
+<h1>Generate CSS variables and Tailwind v4 tokens from SVG assets</h1>
+
 [![npm](https://img.shields.io/npm/v/@artero/svgpack.svg?style=flat-square)](https://www.npmjs.com/package/@artero/svgpack)
 
+`svgpack` is a CLI tool that converts SVG assets into reusable CSS variables, optional utility classes, and native Tailwind v4 @theme tokens for scalable design systems.
 
-`svgpack` converts SVG files into CSS variables and ready-to-use classes.
-
-It optimizes and sanitizes SVGs and generates CSS variables for direct use, plus optional CSS classes for easy implementation. Perfect for modern web development with frameworks like Remix, NextJS, and vanilla CSS.
+It optimizes and sanitizes SVGs, centralizing them in your stylesheet instead of duplicating markup across components. Designed for modern workflows with frameworks like Remix, Next.js, and vanilla CSS.
 
 **Why CSS Variables over Direct SVG?**
 
-Instead of embedding SVG code directly in your HTML (which downloads the entire SVG content on every page load), svgpack converts SVGs into CSS variables that are:
+Instead of duplicating inline SVG markup across components and pages, svgpack converts SVG assets into centralized CSS variables that:
 
-- **Cached once**: CSS variables are downloaded once and cached by the browser, reducing bandwidth usage
-- **Reusable**: Same SVG can be used multiple times without duplicating content
-- **Smaller HTML**: No inline SVG code cluttering your HTML markup
-- **Better performance**: Faster page loads since SVG content isn't repeated in every HTML document
-- **Easier maintenance**: Update SVG once in CSS, changes apply everywhere
+- **Avoid duplicated markup**: SVG definitions live in CSS instead of being repeated inline
+- **Are cached once**: The generated stylesheet is cached by the browser
+- **Keep HTML cleaner**: No large `<svg>` blocks embedded in templates
+- **Encourage reuse**: The same asset can be used consistently across the application
+- **Simplify updates**: Update the SVG once and changes propagate everywhere
 
 **Additional Advantages:**
 
-- Fewer requests for resources on the server
-- Less management problems with the assets of the css
-- CSS variables are native and work in all modern browsers
-- Ready-to-use CSS classes for instant implementation
-- Perfect for component-based frameworks like React, Vue, Angular
-- Easy to use with CSS-in-JS libraries
-- No build step required for CSS variables
-- Flexible sizing and coloring with CSS custom properties
-- It is much faster to update all resources, save the svg
+- Reduced HTML size and duplication
+- Centralized asset management
+- Native CSS custom properties (no runtime required)
+- Optional background and mask utility classes
+- Compatible with modern frameworks (React, Vue, Angular)
+- Optional Tailwind v4 native integration
+- Flexible sizing and coloring via CSS custom properties
 
 ## Table of Contents
 
@@ -58,7 +57,7 @@ npm install -D @artero/svgpack
 ```
 
 > ⚠️ Previously published as `@marsbased/svgpack`.  
-> The old package is deprecated and will no longer receive updates.
+> The package has moved to `@artero/svgpack`.
 
 ### CLI Usage
 

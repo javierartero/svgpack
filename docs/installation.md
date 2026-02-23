@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Installation
-description: Installation options for svgpack
+description: Learn how to install svgpack as a CLI tool, dev dependency, or React runtime dependency for generating CSS variables and Tailwind v4 utilities from SVG assets.
 nav_order: 10
 permalink: /installation/
 markdown: kramdown
@@ -23,7 +23,7 @@ yarn add -D @artero/svgpack
 ```
 
 > ⚠️ Previously published as `@marsbased/svgpack`.  
-> The old package is deprecated and will no longer receive updates.
+> The package has moved to @artero/svgpack.
 
 ---
 

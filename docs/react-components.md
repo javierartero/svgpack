@@ -1,6 +1,7 @@
 ---
 layout: default
 title: React Components
+description: Use ready-to-use React components to render SVG assets as masks or backgrounds with svgpack. Fully typed and compatible with modern React applications.
 nav_order: 7
 permalink: /react-components/
 ---

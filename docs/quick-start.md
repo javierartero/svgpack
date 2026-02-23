@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Quick Start
+description: Quick start guide for svgpack. Install the CLI, generate CSS variables, SCSS functions, or Tailwind-ready utilities from your SVG assets in minutes.
 nav_order: 2
 permalink: /quick-start/
 ---

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Tailwind CSS v4
+description: Integrate SVG assets with Tailwind CSS v4 using native @theme and @utility directives. Generate CSS variables and scalable utilities with svgpack.
 nav_order: 5
 permalink: /tailwind-v4/
 ---

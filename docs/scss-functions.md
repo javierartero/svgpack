@@ -1,6 +1,7 @@
 ---
 layout: default
 title: SCSS Functions
+description: Generate SCSS functions from SVG assets using svgpack. Convert SVG files into reusable Sass functions with dynamic color support.
 nav_order: 6
 permalink: /scss-functions/
 ---

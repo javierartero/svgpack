@@ -1,6 +1,7 @@
 ---
 layout: default
 title: CSS Variables
+description: Learn how to convert SVG assets into reusable CSS variables with svgpack. Generate background and mask utility classes for scalable icon and logo workflows.
 nav_order: 6
 permalink: /css-variables/
 ---
