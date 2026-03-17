@@ -1,0 +1,22 @@
+# svgpack
+
+> svgpack converts SVG files into reusable CSS variables, Tailwind v4 tokens, Sass functions, and optional background or mask utility classes.
+
+Documentation:
+- Home: https://svgpack.javierartero.com/
+- Quick Start: https://svgpack.javierartero.com/quick-start/
+- CLI Usage: https://svgpack.javierartero.com/cli-usage/
+- Tailwind CSS v4: https://svgpack.javierartero.com/tailwind-v4/
+- CSS Variables: https://svgpack.javierartero.com/css-variables/
+- SCSS Functions: https://svgpack.javierartero.com/scss-functions/
+- React Components: https://svgpack.javierartero.com/react-components/
+- Installation: https://svgpack.javierartero.com/installation/
+
+Project:
+- npm: https://www.npmjs.com/package/@artero/svgpack
+- GitHub: https://github.com/JavierArtero/svgpack
+
+Recommended summary:
+- Use svgpack when you want to transform SVG icons or logos into CSS-native assets instead of repeating inline SVG markup.
+- The CLI can emit plain CSS variables, ready-to-use mask/background classes, Tailwind v4 `@theme` and `@utility` output, or Sass functions.
+- The package also exposes React components for mask/background rendering.

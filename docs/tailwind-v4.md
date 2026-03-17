@@ -1,14 +1,16 @@
 ---
 layout: default
-title: Tailwind CSS v4
+title: Tailwind SVG Utilities (Tailwind CSS v4)
 description: Integrate SVG assets with Tailwind CSS v4 using native @theme and @utility directives. Generate CSS variables and scalable utilities with svgpack.
 nav_order: 5
 permalink: /tailwind-v4/
 ---
 
-# Tailwind CSS v4 Native Integration
+# Tailwind SVG utilities for Tailwind CSS v4
 
 svgpack can generate output tailored for **Tailwind v4**, using `@theme` and `@utility` so your SVG variables and utilities are consumed natively by Tailwind’s pipeline.
+
+This page is for teams searching for a Tailwind CSS SVG workflow that does not rely on ad hoc inline markup. svgpack turns SVG icons and logos into native Tailwind v4 tokens and utilities, so the assets remain reusable across components.
 
 ## Generate Tailwind output
 
@@ -59,3 +61,15 @@ Set the image (and optional overrides) with CSS variables, then apply the utilit
 
 Variables like `--image`, `--image--color`, `--image--width`, and `--image--height` are supported for backward compatibility; the new prefixed names (e.g. `--svgpack-color`, `--svgpack-width`) are the recommended API going forward.
 
+## Typical Tailwind use cases
+
+- Build an icon system from an SVG folder and expose it as Tailwind utilities.
+- Render monochrome icons with masks so color can be controlled with Tailwind text classes.
+- Render logos or illustrations with background utilities and explicit dimensions.
+- Keep SVG asset definitions inside the stylesheet instead of repeating inline SVG in templates.
+
+## Related guides
+
+- Start with [Quick Start](/quick-start/) if you have not installed svgpack yet.
+- See [CLI Usage](/cli-usage/) for command options like `--prefix`.
+- See [CSS Variables](/css-variables/) if your project does not use Tailwind.

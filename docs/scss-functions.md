@@ -8,7 +8,7 @@ permalink: /scss-functions/
 
 # SCSS Functions
 
-For projects that use SCSS, you can generate functions instead of CSS variables:
+For projects that use SCSS, you can generate functions instead of CSS variables. This mode is useful when you want SVG assets as reusable Sass functions with dynamic color control during compilation.
 
 ```bash
 svgpack my-icon-folder/ --sass
@@ -43,3 +43,5 @@ $color: #fff;
 ```
 
 **Note:** SCSS functions support color parameters, while CSS variables have fixed colors. Both approaches have their advantages depending on your project setup.
+
+If your stack is CSS-first, see [CSS Variables](/css-variables/). If you need utility generation for Tailwind, see [Tailwind v4](/tailwind-v4/).

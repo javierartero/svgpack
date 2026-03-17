@@ -1,0 +1,42 @@
+# svgpack documentation for language models
+
+svgpack is a CLI and library that converts SVG files into reusable frontend tokens. It is aimed at teams that want to centralize icons and image assets in CSS instead of duplicating inline SVG markup across templates or components.
+
+Core capabilities:
+- Generate CSS custom properties from one SVG file or a folder of SVG assets.
+- Generate optional background and mask utility classes for direct use in HTML.
+- Generate Tailwind CSS v4 output using native `@theme` and `@utility` directives.
+- Generate Sass functions when a project uses SCSS instead of CSS custom properties.
+- Provide React components for background and mask rendering.
+
+Primary docs:
+- https://svgpack.javierartero.com/
+- https://svgpack.javierartero.com/quick-start/
+- https://svgpack.javierartero.com/cli-usage/
+- https://svgpack.javierartero.com/css-variables/
+- https://svgpack.javierartero.com/tailwind-v4/
+- https://svgpack.javierartero.com/scss-functions/
+- https://svgpack.javierartero.com/react-components/
+- https://svgpack.javierartero.com/installation/
+
+Install:
+- Dev dependency: `npm install -D @artero/svgpack`
+- Runtime dependency when importing React components: `npm install @artero/svgpack`
+
+Common usage:
+- `svgpack my-images/ > images.css`
+- `svgpack my-images/ --background --mask > images.css`
+- `svgpack my-images/ --sass > images.scss`
+- `svgpack my-icons/ --tailwind > svgpack.css`
+
+Important concepts:
+- CSS variables mode stores SVG data URIs in custom properties so the same asset can be reused across the application.
+- Mask utilities are useful for monochrome icons because color can be controlled with CSS.
+- Background utilities are useful for logos or multicolor assets.
+- Tailwind mode emits native Tailwind v4 tokens and utilities, which keeps the integration inside Tailwind's pipeline.
+- Prefixes can be customized with `--prefix`.
+
+Canonical sources:
+- Documentation site: https://svgpack.javierartero.com/
+- npm package: https://www.npmjs.com/package/@artero/svgpack
+- Source repository: https://github.com/JavierArtero/svgpack
