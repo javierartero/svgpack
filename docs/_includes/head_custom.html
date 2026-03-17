@@ -45,3 +45,54 @@
 
 <!-- Umami analytics -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="330493e8-0bc0-47ed-8e2c-30050356311b"></script>
+
+
+<script>
+  (function () {
+    function init() {
+      const el = document.body;
+      const themeMeta = document.querySelector('meta[name="theme-color"]');
+      if (!el) {
+        requestAnimationFrame(init);
+        return;
+      }
+
+      const PERIOD_MS = 20000;
+      const A = { col1: "#D929CC", col2: "#EF1625" };
+      const B = { col1: "#EF1625", col2: "#FB7C13" };
+
+      const hexToRgb = h => {
+        const n = parseInt(h.slice(1), 16);
+        return { r:(n>>16)&255, g:(n>>8)&255, b:n&255 };
+      };
+
+      const lerp = (a,b,t)=>a+(b-a)*t;
+
+      const mix = (a,b,t)=>{
+        const A_=hexToRgb(a), B_=hexToRgb(b);
+        return `rgb(${lerp(A_.r,B_.r,t)|0} ${lerp(A_.g,B_.g,t)|0} ${lerp(A_.b,B_.b,t)|0})`;
+      };
+
+      const ease = t => t<.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2;
+      const alt  = t => t<.5 ? t*2 : (1-t)*2;
+
+      function tick(){
+        const tRaw = (Date.now() % PERIOD_MS) / PERIOD_MS;
+        const t = ease(alt(tRaw));
+
+        const col1 = mix(A.col1,B.col1,t);
+        const col2 = mix(A.col2,B.col2,t);
+
+        el.style.setProperty("--col-1", col1);
+        el.style.setProperty("--col-2", col2);
+
+
+        requestAnimationFrame(tick);
+      }
+
+      tick();
+    }
+
+    init();
+  })();
+</script>

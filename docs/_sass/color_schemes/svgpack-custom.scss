@@ -1,11 +1,13 @@
 // Custom color scheme for svgpack
 // Based on the default light scheme
 
-$primary: #EF1625;
+$primary: #D929CC;
 $primary-light: #ff9999;
 $primary-dark: #660000;
-$secondary: #31343f;
-$navy: $primary;
+$secondary: #EF1625;
+$neutral: #31343f;
+
+$navy: var(--col-1);
 
 // Override theme variables
 $link-color: $primary;
@@ -23,5 +25,8 @@ $text-muted: #7d6c6f;
 
 // Code colors
 $code-text-color: $navy;
+
+$root-font-size: 16px;      // tamaño base (1rem)
+$body-font-size: 1rem;  // cuerpo de texto
 
 @import "syntax-dark.scss";

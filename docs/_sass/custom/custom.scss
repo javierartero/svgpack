@@ -1,16 +1,9 @@
 @import "../color_schemes/svgpack-custom.scss";
 @import "svgpack.css";
 
-@property --col-1 {
-  syntax: "<color>";
-  inherits: false;
-  initial-value: #D929CC;
-}
-
-@property --col-2 {
-  syntax: "<color>";
-  inherits: false;
-  initial-value: #EF1625;
+html {
+  font-size: 1rem !important;
+  // background-color: var(--col-1);
 }
 
 .highlight {
@@ -25,26 +18,20 @@
 
 .side-bar {
   background: linear-gradient(to bottom, var(--col-1), var(--col-2));
-  background-color: $primary;
-  animation: gradient 10s ease-in-out infinite alternate;
+  background-color:  var(--col-1);
   color: white;
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
   z-index: 1000;
 
   @include mq('md') {
     position: fixed;
+    width: auto;
   }
 
   a {
     color: inherit;
-  }
-}
-
-@keyframes gradient {
-  to {
-    --col-1: #EF1625;
-    --col-2: #FB7C13;
   }
 }
 
@@ -95,9 +82,8 @@
   color: white;
 
   @include mq('md') {
-    color: $secondary;
+    color: $neutral;
     background: linear-gradient(to bottom, var(--col-1), var(--col-2));
-    animation: gradient 10s ease-in-out infinite alternate;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -106,12 +92,11 @@
 
   .svgpack-mask {
     background: linear-gradient(to bottom, var(--col-1), var(--col-2));
-    animation: gradient 10s ease-in-out infinite alternate;
   }
 }
 
 .side-bar + .main .main-header {
-  background-color: $secondary;
+  background-color: $neutral;
 
   @include mq('md') {
     background-color: transparent;
@@ -156,5 +141,11 @@
   display: block;
   background: linear-gradient(to bottom, var(--col-1), var(--col-2));
   background-color: $primary;
-  animation: gradient 10s ease-in-out infinite alternate;
+}
+
+.main-content {
+  padding-top: 3.75rem;
+  @include mq('md') {
+    padding-top: 0;
+  }
 }
