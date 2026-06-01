@@ -45,3 +45,76 @@
 
 <!-- Umami analytics -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="330493e8-0bc0-47ed-8e2c-30050356311b"></script>
+
+
+<script>
+  (function () {
+    const PERIOD_MS = 30000;
+    const START = { primary: "#D929CC", secondary: "#EF1625" };
+    const END = { primary: "#EF1625", secondary: "#FB7C13" };
+
+    const hexToRgb = hex => {
+      const value = parseInt(hex.slice(1), 16);
+      return {
+        r: (value >> 16) & 255,
+        g: (value >> 8) & 255,
+        b: value & 255
+      };
+    };
+
+    const START_RGB = {
+      primary: hexToRgb(START.primary),
+      secondary: hexToRgb(START.secondary)
+    };
+
+    const END_RGB = {
+      primary: hexToRgb(END.primary),
+      secondary: hexToRgb(END.secondary)
+    };
+
+    const lerp = (a, b, t) => a + (b - a) * t;
+    const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+    const pingPong = t => t < .5 ? t * 2 : (1 - t) * 2;
+
+    const mix = (from, to, t) => (
+      `rgb(${Math.trunc(lerp(from.r, to.r, t))} ${Math.trunc(lerp(from.g, to.g, t))} ${Math.trunc(lerp(from.b, to.b, t))})`
+    );
+
+    function setBrandColors(el, primary, secondary) {
+      el.style.setProperty("--primary", primary);
+      el.style.setProperty("--secondary", secondary);
+    }
+
+    function init() {
+      const el = document.body;
+      if (!el) {
+        requestAnimationFrame(init);
+        return;
+      }
+
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (reduceMotion) {
+        setBrandColors(el, START.primary, START.secondary);
+        return;
+      }
+
+      function tick() {
+        const tRaw = (Date.now() % PERIOD_MS) / PERIOD_MS;
+        const t = ease(pingPong(tRaw));
+
+        setBrandColors(
+          el,
+          mix(START_RGB.primary, END_RGB.primary, t),
+          mix(START_RGB.secondary, END_RGB.secondary, t)
+        );
+
+        requestAnimationFrame(tick);
+      }
+
+      tick();
+    }
+
+    init();
+  })();
+</script>
