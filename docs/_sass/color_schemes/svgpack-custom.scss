@@ -1,27 +1,28 @@
 // Custom color scheme for svgpack
 // Based on the default light scheme
 
-$primary: #EF1625;
-$primary-light: #ff9999;
-$primary-dark: #660000;
-$secondary: #31343f;
-$navy: $primary;
+$primary: var(--primary);
+$secondary: var(--secondary);
+$neutral: #31343f;
 
 // Override theme variables
 $link-color: $primary;
-$link-color-visited: $primary-dark;
-$link-color-hover: $primary-light;
 
 // Background colors
 $body-background-color: #ffffff;
 $sidebar-color: $primary;
+// Sass cannot darken() a CSS var; override theme light.scss $feedback-color
+$feedback-color: rgba(235, 237, 245, 0.15);
 $border-color: rgb(235, 223, 225);
 
 // Text colors
-$text-color: $navy;
+$text-color: $neutral;
 $text-muted: #7d6c6f;
 
 // Code colors
-$code-text-color: $navy;
+$code-text-color: $neutral;
+
+$root-font-size: 16px;
+$body-font-size: 1rem;
 
 @import "syntax-dark.scss";

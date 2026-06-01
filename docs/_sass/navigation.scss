@@ -1,0 +1,247 @@
+// Forked from just-the-docs/_sass/navigation.scss
+// Uses CSS custom properties where the theme called darken()/rgba() on $link-color / $feedback-color.
+
+// Main nav, breadcrumb, etc...
+// stylelint-disable selector-no-type, max-nesting-depth, selector-max-compound-selectors, selector-max-type, selector-max-specificity
+
+.nav-list {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: none;
+
+  .nav-list-item {
+    position: relative;
+    margin: 0;
+    display: grid;
+    grid-template-rows: auto 0fr;
+    transition: grid-template-rows 280ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    @include fs-4;
+
+    @include mq(md) {
+      @include fs-3;
+    }
+
+    .nav-list-link {
+      display: block;
+      min-height: $nav-list-item-height-sm;
+      padding-top: $sp-1;
+      padding-bottom: $sp-1;
+      line-height: #{$nav-list-item-height-sm - 2 * $sp-1};
+      outline-offset: -1px; // Fixes outline clipping on both desktop/mobile "views"
+
+      @if $nav-list-expander-right {
+        padding-right: $nav-list-item-height-sm;
+        padding-left: $gutter-spacing-sm;
+      } @else {
+        padding-right: $gutter-spacing-sm;
+        padding-left: $nav-list-item-height-sm;
+      }
+
+      @include mq(md) {
+        min-height: $nav-list-item-height;
+        line-height: #{$nav-list-item-height - 2 * $sp-1};
+        @if $nav-list-expander-right {
+          padding-right: $nav-list-item-height;
+          padding-left: $gutter-spacing;
+        } @else {
+          padding-right: $gutter-spacing;
+          padding-left: $nav-list-item-height;
+        }
+      }
+
+      &.external > svg {
+        width: $sp-4;
+        height: $sp-4;
+        vertical-align: text-bottom;
+      }
+
+      &.active {
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      &:hover,
+      &.active {
+        color: var(--primary, #{$link-color});
+        background-image: linear-gradient(
+          -90deg,
+          rgba(235, 237, 245, 0.15) 0%,
+          rgba(255, 255, 255, 0.12) 80%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
+    }
+
+    .nav-list-expander {
+      position: absolute;
+      @if $nav-list-expander-right {
+        right: 0;
+      }
+
+      width: $nav-list-item-height-sm;
+      height: $nav-list-item-height-sm;
+      padding: #{$nav-list-item-height-sm * 0.25};
+      color: $link-color;
+      outline-offset: -1px; // Fixes outline clipping on both desktop/mobile "views"
+
+      @include mq(md) {
+        width: $nav-list-item-height;
+        height: $nav-list-item-height;
+        padding: #{$nav-list-item-height * 0.25};
+      }
+
+      &:hover {
+        background-image: linear-gradient(
+          -90deg,
+          var(--svgpack-nav-feedback, rgba(235, 237, 245, 0.15)) 0%,
+          rgba(255, 255, 255, 0.12) 100%
+        );
+      }
+
+      @if $nav-list-expander-right {
+        svg {
+          transform: rotate(90deg);
+          transition: transform 220ms ease;
+        }
+      }
+    }
+
+    > .nav-list {
+      display: block;
+      min-height: 0;
+      padding-left: $sp-3;
+      list-style: none;
+      margin: 0;
+      overflow: hidden;
+
+      .nav-list-item {
+        position: relative;
+
+        .nav-list-link {
+          color: $nav-child-link-color;
+        }
+
+        .nav-list-expander {
+          color: $nav-child-link-color;
+        }
+      }
+    }
+
+    &.active {
+      grid-template-rows: auto 1fr;
+
+      > .nav-list-expander svg {
+        @if $nav-list-expander-right {
+          transform: rotate(-90deg);
+        } @else {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+}
+
+.nav-category {
+  padding: $sp-2 $gutter-spacing-sm;
+  font-weight: 600;
+  text-align: start;
+  text-transform: uppercase;
+  border-bottom: $border $border-color;
+  @include fs-2;
+
+  @include mq(md) {
+    padding: $sp-2 $gutter-spacing;
+    margin-top: $gutter-spacing-sm;
+    text-align: start;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.nav-list.nav-category-list {
+  > .nav-list-item {
+    margin: 0;
+
+    > .nav-list {
+      padding: 0;
+
+      > .nav-list-item {
+        > .nav-list-link {
+          color: $link-color;
+        }
+
+        > .nav-list-expander {
+          color: $link-color;
+        }
+      }
+    }
+  }
+}
+
+// Aux nav
+
+.aux-nav {
+  height: 100%;
+  overflow-x: auto;
+  @include fs-2;
+
+  .aux-nav-list {
+    display: flex;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .aux-nav-list-item {
+    display: inline-block;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  @include mq(md) {
+    padding-right: $gutter-spacing-sm;
+  }
+}
+
+// Breadcrumb nav
+
+.breadcrumb-nav {
+  @include mq(md) {
+    margin-top: -$sp-4;
+  }
+}
+
+.breadcrumb-nav-list {
+  padding-left: 0;
+  margin-bottom: $sp-3;
+  list-style: none;
+}
+
+.breadcrumb-nav-list-item {
+  display: table-cell;
+  @include fs-2;
+
+  &::before {
+    display: none;
+  }
+
+  &::after {
+    display: inline-block;
+    margin-right: $sp-2;
+    margin-left: $sp-2;
+    color: $grey-dk-000;
+    content: "/";
+  }
+
+  &:last-child {
+    &::after {
+      content: "";
+    }
+  }
+}
