@@ -1,6 +1,6 @@
 {
   "name": "@artero/svgpack",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Convert SVG icons into reusable CSS variables, Tailwind v4 tokens, Sass functions, and React-friendly utilities.",
   "homepage": "https://svgpack.javierartero.com/",
   "repository": {
@@ -57,10 +57,10 @@
   },
   "dependencies": {
     "globby": "^11.1.0",
-    "lodash": "^4.17.21",
+    "lodash": "^4.18.1",
     "minimist": "^1.2.8",
     "ora": "^5.4.1",
-    "svgo": "^3.0.2",
+    "svgo": "^3.3.5",
     "to-slug-case": "^1.0.0"
   },
   "devDependencies": {
